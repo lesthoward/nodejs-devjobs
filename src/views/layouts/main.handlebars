@@ -56,7 +56,11 @@
 
         {{!-- Button --}}
         {{#if button}}
-            <a href="/vacancies/new" class="btn btn-azul">Publicar nueva vacante</a>
+            {{#if user}}
+                <a href="/vacancies/new" class="btn btn-azul">Publicar nueva vacante</a>
+            {{else}}
+                <a href="/vacancies/new" class="btn btn-azul">Inicia sesión como reclutador</a>
+            {{/if}}
         {{/if}}
     </header>
 

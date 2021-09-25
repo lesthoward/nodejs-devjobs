@@ -31,13 +31,14 @@ const upload = multer(multerConfig).single('cv')
 
 const vacanciesList = async (req = request, res = response) => {
 	const vacancies = await Vacancy.find().lean();
-
+	const user = req.user
 	res.render('home', {
 		title: 'DevJobs',
 		tagline: 'Encuentra y publica trabajos para programadores web',
 		bar: true,
 		button: true,
 		vacancies,
+		user
 	});
 };
 
