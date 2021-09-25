@@ -1,0 +1,73 @@
+<div class="contenido-superior vacante contenedor">
+    <div class="caja">
+        <p class="etiqueta">Empresa</p>
+        <p class="nombre">{{uniqueVacancy.company}}</p>
+    </div>
+    {{!-- caja --}}
+    <div class="caja">
+        <p class="etiqueta">Ubicación</p>
+        <p class="nombre">{{uniqueVacancy.location}}</p>
+    </div>
+    {{!-- caja --}}
+    <div class="caja">
+        <p class="etiqueta">Contrato</p>
+        <p class="nombre contrato">{{uniqueVacancy.contract}}</p>
+    </div>
+    {{!-- caja --}}
+    <div class="caja">
+        <p class="etiqueta">Salario</p>
+        <p class="nombre">{{uniqueVacancy.salary}}</p>
+    </div>
+    {{!-- caja --}}
+</div>
+
+<div class="vacante-contenedor contenedor">
+    <main class="contenido">
+        <h2>Descripción del puesto</h2>
+        <div class="vacante-descripcion">
+            {{{uniqueVacancy.description}}}
+        </div>
+        <a href="/vacancies/edit/{{uniqueVacancy.url}}" class="btn btn-azul editar-btn">Editar vacante</a>
+    </main>
+    <aside class="sidebar">
+        <h2>Habilidades</h2>
+        <ul class="skills">
+            {{#each uniqueVacancy.skills}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </aside>
+</div>
+
+<div class="contenenedor datos-reclutador">
+    <div class="enviar-datos">
+        <h2>Contactar reclutador</h2>
+        <p>Llena el formulario para enviar tus datos al reclutador</p>
+
+        <form method="POST" action="/vacancies/candidates/{{uniqueVacancy.url}}" class="default-form" enctype="multipart/form-data">
+            <div class="campo">
+                <label>Nombre</label>
+                <input type="text" name="name" placeholder="Tu nombre">
+            </div>
+            <div class="campo">
+                <label>Correo</label>
+                <input type="text" name="email" placeholder="Correo electrónico">
+            </div>
+            <div class="campo">
+                <label>CV (PDF)</label>
+                <input type="file" name="cv">
+            </div>
+            <div class="campo">
+                <input type="submit" class="btn btn-verde">
+            </div>
+        </form>
+    </div>
+
+    <div class="info-reclutador">
+        <h2>Información del reclutador</h2>
+        <p>Publicado por: {{uniqueVacancy.author.name}}</p>
+        {{#if uniqueVacancy.author.profile_picture}}
+            <img src="/uploads/{{uniqueVacancy.author.profile_picture}}"></img>
+        {{/if}}
+    </div>
+</div>

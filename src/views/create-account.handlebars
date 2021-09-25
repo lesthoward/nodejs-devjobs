@@ -1,0 +1,31 @@
+<main class="contenedor">
+    <form action="/register" method="POST" class="default-form">
+        <div class="campo">
+            <label>Nombre</label>
+            <input type="text" name="name" placeholder="Lester Howard" value={{data.name}}>
+        </div>
+        {{!-- campo --}}
+        <div class="campo">
+            <label>E-Mail</label>
+            <input type="text" name="email" placeholder="correo@correo.com" value={{data.email}}>
+        </div>
+        {{!-- campo --}}
+        <div class="campo">
+            <label>Contraseña</label>
+            <input type="password" name="password" placeholder="Contraseña segura">
+        </div>
+        {{!-- campo --}}
+        <div class="campo">
+            <label>Repetir contraseña</label>
+            <input type="password" name="confirm" placeholder="Repetir contraseña">
+        </div>
+        {{!-- campo --}}
+        <div class="campo acciones">
+            <a href="/login">Back to login</a>
+        </div>
+        {{!-- acciones --}}
+        <div class="campo">
+            <input type="submit" value="Crear cuenta" class="btn btn-azul">
+        </div>
+    </form>
+</main>

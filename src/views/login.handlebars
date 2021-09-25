@@ -1,0 +1,22 @@
+<main class="contenedor">
+    <form action="/login" method="POST" class="default-form">
+        <div class="campo">
+            <label>Email</label>
+            <input type="text" name="email" placeholder="correo@correo.com" value="{{messages.userEmail}}">
+        </div>
+
+        <div class="campo">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Your confidential password">
+        </div>
+
+        <div class="campo acciones">
+            <a href="/register">Create an account</a>
+            <a href="/reset-password">Reset password</a>
+        </div>
+
+        <div class="campo">
+            <input type="submit" value="Login" class="btn btn-azul">
+        </div>
+    </form>
+</main>

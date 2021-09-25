@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- Google Fonts --}}
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    {{!-- Stylesheets --}}
+    <link rel="stylesheet" href="/css/main.css">
+    {{!-- Trix Text Editor --}}
+    <link rel="stylesheet" href="/css/trix.css">
+    <script src="/js/trix-core.js"></script>
+    {{!-- Bundle.js --}}
+    <script src="/dist/bundle.js" defer></script>
+    {{!-- Favicon --}}
+    <link rel="shortcut icon" href="/assets/images/job-search.svg" type="image/x-icon">
+    {{!-- Others --}}
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class="nombre-sitio contenedor">
+        <h1>
+            <a href="/">DevJobs</a>
+        </h1>
+        {{#if bar}}
+            <div class="buscador">
+                <form action="/vacancies/search" method="POST">
+                    <input type="text" class="buscar" name="query">
+                    <input type="submit" value="Buscar">
+                </form>
+            </div>
+            {{!-- buscador --}}
+        {{/if}}
+
+        {{#if logout}}
+            <div class="cerrar-sesion">
+                <p>Tu perfil: {{userName}}</p>
+                {{#if profilePicture}}
+                    <img src="/uploads/{{profilePicture}}" class="admin-perfil">
+                {{/if}}
+                <a href="/management">Administrador</a>
+                <a href="/logout">Cerrar sesión</a>
+            </div>
+            {{else}}
+        {{/if}}
+    </div>
+    {{!-- nombre-sitio --}}
+
+    <header class="site-header contenedor separador">
+        <h2>{{ title }}</h2>
+        {{!-- Tagline --}}
+        {{#if tagline}}
+            <p class="tagline">{{ tagline }}</p>
+        {{/if}}
+
+        {{!-- Button --}}
+        {{#if button}}
+            <a href="/vacancies/new" class="btn btn-azul">Publicar nueva vacante</a>
+        {{/if}}
+    </header>
+
+    <div class="contenidor-principal contenedor">
+        {{#if messages}}
+            <div class="alertas">
+                {{#showErrors messages}}
+                {{/showErrors}}
+            </div>
+        {{/if}}
+        {{{ body }}}
+    </div>
+    {{!-- contenidor-principal --}}
+</body>
+</html>

@@ -1,0 +1,55 @@
+<main class="contenedor">
+    <form action="/vacancies/edit/{{uniqueVacancy.url}}" method="POST" class="default-form">
+        <h3>Información General</h3>
+
+        <div class="campo">
+            <label>Titulo</label>
+            <input type="text" name="title" placeholder="React Developer" required value="{{uniqueVacancy.title}}">
+        </div>
+        {{!-- campo --}}
+        <div class="campo">
+            <label>Empresa</label>
+            <input type="text" name="company" placeholder="Facebook" required value="{{uniqueVacancy.company}}">
+        </div>
+        {{!-- campo --}}
+        <div class="campo">
+            <label>Ubicación</label>
+            <input type="text" name="location" placeholder="Costa Rica o Remoto" required value="{{uniqueVacancy.location}}">
+        </div>
+        {{!-- campo --}}
+        <div class="campo">
+            <label>Salario (USD)</label>
+            <input type="text" name="salary" placeholder="$1200" required value="{{uniqueVacancy.salary}}">
+        </div>
+        {{!-- campo --}}
+        <div class="campo">
+            <label>Contrato</label>
+            <select name="contract">
+                {{#typeContract uniqueVacancy.contract}}
+                    <option value="" selected disabled>-- Select ---</option>
+                    <option value="freelance">Freelance</option>
+                    <option value="full-time">Tiempo completo</option>
+                    <option value="half-time">Tiempo medio</option>
+                    <option value="projects">Por proyectos</option>
+                {{/typeContract}}
+            </select>
+        </div>
+        {{!-- campo --}}
+        <h3>Descripción del puesto</h3>
+        <div class="campo descripcion">
+            <input type="hidden" id="x" name="description" value="{{{uniqueVacancy.description}}}">
+            <trix-editor input="x" placeholder="Escribe un resumen del puesto"></trix-editor>
+        </div>
+
+        <h3>Habilidades</h3>
+        <input type="hidden" name="skills" id="skills">
+        <ul class="lista-conocimientos">
+            {{#selectSkills uniqueVacancy.skills}}
+            {{/selectSkills}}
+        </ul>
+
+        <div class="campo centrar-horizontal">
+            <input type="submit" value="Publicar" class="btn btn-azul">
+        </div>
+    </form>
+</main>
